@@ -1,0 +1,37 @@
+﻿@model ProductModelDTO
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Model Güncelleme İşlemi</title>
+</head>
+<body>
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog" style="background-color:cornsilk">
+            <div class="modal-content" style="background-color:cornsilk">
+                <div class="modal-header" style="background-color:cornsilk">
+                    <h4 class="modal-title" id="myModalLabel" style="color:black;margin-left:100px;">Model Güncelleme Sayfası</h4>
+                    <a asp-action="Index" asp-controller="ProductModel"><button type="button" class="btn-default" aria-hidden="true">&times;</button></a>
+
+                </div>
+                <div class="modal-body">
+                    <form asp-action="EditProductModel" asp-controller="ProductModel" method="post">
+                        <input type="hidden" asp-for="@Model.Id" />
+                        <label>Modelin yeni adını giriniz.</label>
+                        <div style="margin-top:5px;margin-bottom:10px"><input asp-for="@Model.Name" type="text" class="form-control" placeholder="Lütfen Model adı giriniz."autocomplete="off" /></div> <span asp-validation-for="@Model.Name" class="text-danger"></span>
+                        <div style="margin-top:10px;margin-bottom:5px;"><button type="submit" class="btn btn-outline-primary form-control"> Modeli Güncelle</button></div>
+                        <div><a asp-action="Index" asp-controller="ProductModel"><button type="button" class="btn btn-outline-info form-control">Vazgeç</button></a></div>
+
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <center> <div asp-validation-summary="ModelOnly" class="text-success"></div></center>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="~/js/site.js"></script>
+
+</body>
+</html>

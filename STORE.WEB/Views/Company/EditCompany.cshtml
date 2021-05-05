@@ -1,0 +1,41 @@
+﻿@model CompanyDTO
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Kurum Güncelleme İşlemi</title>
+</head>
+
+<body>
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog" style="background-color:floralwhite">
+            <div class="modal-content" style="background-color:floralwhite">
+                <div class="modal-header" style="background-color:floralwhite">
+                    <h4 class="modal-title" id="myModalLabel" style="color:black;margin-left:100px;">Kurum Güncelleme Sayfası</h4>
+                    <a asp-action="Index" asp-controller="Company"><button type="button" aria-hidden="true" style="background-color:floralwhite">&times;</button></a>
+
+                </div>
+                <div class="modal-body">
+                    
+                    <form asp-action="EditCompany" asp-controller="Company" method="post">
+                        <input type="hidden" asp-for="Id" />
+                        <div asp-validation-summary="ModelOnly" class="text-dark"></div>
+                        <div style="margin-top:5px;margin-bottom:10px"> <span asp-validation-for="@Model.Name" class="text-danger"></span><input asp-for="@Model.Name" type="text" class="form-control" placeholder="Lütfen Kurum adı giriniz." /></div>
+                        <div style="margin-top:5px;margin-bottom:10px"> <span asp-validation-for="@Model.Address" class="text-danger"></span><input asp-for="@Model.Address" type="text" class="form-control" placeholder="Lütfen Kurum adresi giriniz." /></div>
+                        <div style="margin-top:5px;margin-bottom:10px"> <span asp-validation-for="@Model.Number" class="text-danger"></span><input asp-for="@Model.Number" type="tel" class="form-control" placeholder="Lütfen Kurum telefonu giriniz." /></div>
+                        <div style="margin-top:10px;margin-bottom:5px;"><button type="submit" class="btn btn-outline-secondary form-control"> Kurumu Güncelle</button></div>
+                        <div><a asp-action="Index" asp-controller="Company"><button type="button" class="btn btn-danger form-control">Vazgeç</button></a></div>
+
+                    </form>
+                </div>
+                <div class="modal-footer">
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="~/js/site.js"></script>
+
+</body>
+</html>

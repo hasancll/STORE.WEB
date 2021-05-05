@@ -1,0 +1,103 @@
+﻿@model ProductDTO
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Barkodlu Mağaza Sistemi</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container">
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Barkodlu Mağaza Sistemi</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">İşlem Sayfası</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Login" asp-action="SignIn">Çıkış Yap</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+</body>
+<div class="container">
+    <form asp-action="AddProduct" asp-controller="Product" method="post">
+        <center><b><label><font size="5">Ürün Ekleme Sayfası</font></label></b></center>
+
+        <div class="form-group">
+            <label for="Description">Ürün Adı</label>
+            <input asp-for="Description" class="form-control" type="text" placeholder="Ürün Adını Giriniz"autocomplete="off">
+            <div class="text-danger"><span asp-validation-for="Description"></span></div>
+        </div>
+        <div class="form-group">
+            <label for="Barcode">Ürün Barkodu</label>
+            <input asp-for="Barcode" class="form-control" type="text" placeholder="Ürün Barkodunu Okutunuz"autocomplete="off">
+        </div>
+        <div class="form-group">
+            <label for="ProductCode">Ürün Kodu</label>
+            <input asp-for="ProductCode" class="form-control" type="text" placeholder="Ürün Kodunu Giriniz"autocomplete="off">
+        </div>
+        <div>
+            <label for="ProductCategoryDTO">Ürün Kategorisi Seçiniz.</label>
+            <select class="form-control" asp-for="ProductCategoryId" asp-items="ViewBag.Categories"autocomplete="off">
+                <option value="">Kategori Seçiniz.</option>
+            </select>
+        </div>
+        <div>
+            <label for="ProductSizeDTO">Ürün Bedeni Seçiniz.</label>
+            <select class="form-control" asp-for="ProductSizeId" asp-items="ViewBag.sizes"autocomplete="off">
+                <option value="">Beden Seçiniz.</option>
+            </select>
+        </div>
+        <div>
+            <label for="ProductModelDTO">Ürün Modeli Seçiniz.</label>
+            <select class="form-control" asp-for="ProductModelId" asp-items="ViewBag.Models"autocomplete="off">
+                <option value="">Model Seçiniz.</option>
+            </select>
+        </div>
+        <div>
+            <label for="ProductColorDTO">Ürün Rengi Seçiniz.</label>
+            <select class="form-control" asp-for="ProductColorId" asp-items="ViewBag.Colors"autocomplete="off">
+                <option value="">Renk Seçiniz.</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="ProductStock">Stok Adedi Giriniz.</label>
+            <input asp-for="ProductStockDTO.StockAmount" class="form-control" type="text" placeholder="Stok Giriniz.(Adet)"autocomplete="off">
+        </div>
+        <div class="form-group">
+            <label for="PurchasePrice">Alış Fiyatı Giriniz.</label>
+            <input asp-for="PurchasePrice" class="form-control" type="text" placeholder="Alış Fiyatı Giriniz"autocomplete="off">
+        </div>
+        <div class="form-group">
+            <label for="UnitPrice">Satış Fiyatı Giriniz.</label>
+            <input asp-for="UnitPrice" class="form-control" type="text" placeholder="Satış Fiyatı Giriniz"autocomplete="off">
+        </div>
+        <div class="form-group">
+            <label for="ProfitPrice">Kar Giriniz.</label>
+            <input asp-for="ProfitPrice" class="form-control" type="text" placeholder="Kar Fiyatı Giriniz"autocomplete="off">
+        </div>
+        <a asp-action="Index" asp-controller="Home" class="btn btn-warning">Vazgeç</a>
+        <button type="submit" class="btn btn-info">Ürünü Ekle</button>
+        <div class="text-success">@ViewBag.Status</div>
+    </form>
+</div>
+<footer class="border-top footer text-muted">
+    <div class="container">
+        &copy; 2021 - Barkodlu Mağaza Sistemi - <a>Hasan Hüseyin ÇALILI</a>
+    </div>
+</footer>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="~/js/site.js" asp-append-version="true"></script>

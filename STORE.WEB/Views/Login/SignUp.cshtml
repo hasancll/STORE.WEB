@@ -1,0 +1,42 @@
+﻿@model UserViewModelResource
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Kayıt İşlemi</title>
+</head>
+
+<body>
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog" style="background-color:dimgrey">
+            <div class="modal-content" style="background-color:dimgrey">
+                <div class="modal-header" style="background-color:dimgrey">
+                  <h4 class="modal-title" id="myModalLabel" style="color:white;margin-left:100px;">Kullanıcı Kayıt Sayfası</h4>
+                    <a asp-action="SignIn" asp-controller="Login"><button type="button"class="btn-default"  aria-hidden="true" >&times;</button></a>
+
+                </div>
+                <div class="modal-body">
+                    <form asp-action="SignUp" asp-controller="Login" method="post">
+                       
+                        <div style="margin-top:5px;margin-bottom:10px"> <span asp-validation-for="@Model.Username" class="text-danger"></span><input asp-for="@Model.Username" type="text" class="form-control" placeholder="Lütfen Kullanıcı adınızı giriniz." autocomplete="off"/></div>
+                        
+                        <div style="margin-top:20px;margin-bottom:20px"><span asp-validation-for="@Model.Password" class="text-danger"></span><input asp-for="@Model.Password" type="text" class="form-control" placeholder="Lütfen Şifrenizi giriniz" autocomplete="off"/></div>
+                        
+                        <div style="margin-top:20px;margin-bottom:20px;"><span asp-validation-for="@Model.Email" class="text-danger"></span><input asp-for="@Model.Email" type="text" class="form-control" placeholder="Lütfen Email adresinizi giriniz." autocomplete="off"/></div>
+                        <div style="margin-top:10px;margin-bottom:5px;">  <button type="submit" class="btn btn-danger form-control"> Kayıt Ol</button> </div>
+                        <div><a asp-action="SignIn" asp-controller="Login"><button type="button" class="btn btn-danger form-control">Giriş Yap</button></a></div>
+
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <label>@ViewBag.Status</label>
+                    <center> <div asp-validation-summary="ModelOnly" class="text-success"></div></center>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="~/js/site.js"></script>
+    
+</body>
+</html>

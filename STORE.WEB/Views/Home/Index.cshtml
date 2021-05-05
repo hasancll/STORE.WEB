@@ -1,0 +1,76 @@
+﻿@model ProductDTO
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Barkodlu Mağaza Sistemi</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container">
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Barkodlu Mağaza Sistemi</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Index" asp-action="Home">İşlem Sayfası</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Login" asp-action="SignIn">Çıkış Yap</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+          <button style="height:200px;width:250px;margin-top:200px;box-shadow: 0px 8px 15px;" type="button" class="btn btn-primary" data-toggle="modal" data-target="#Urun">Ürün İşlemleri</button></a>
+            <div class="modal fade" id="Urun" tabindex="-1" role="dialog" aria-labelledby="">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title" id="myModalLabel">Lütfen yapmak istediğiniz işlemi seçiniz.</h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                        </div>
+
+                        <div class="modal-footer">
+                            <a asp-action="GetByBarcodeProduct" asp-controller="Product"><button type="submit" class="btn btn-primary">Ürün Sorgulama</button></a>
+                            <a asp-action="AddProduct" asp-controller="Product"><button type="submit" class="btn btn-primary">Ürün Ekleme</button></a>
+                            <a asp-action="GetByBarcodeProduct" asp-controller="Product"><button type="submit" class="btn btn-primary">Ürün Silme</button></a>
+                            <a asp-action="GetByBarcodeProduct" asp-controller="Product"><button type="submit" class="btn btn-primary">Ürün Güncelleme</button></a>
+                         </div>
+                    </div>
+                </div>
+            </div>
+            <a asp-action="ChangePassword" asp-controller="Login"><button style="height:200px;width:250px;position:absolute;margin-top:220px;" type="button" class="btn btn-primary">Kullanıcı Şifre Değiştirme</button></a>
+            <a asp-action="GetFilteredProduct" asp-controller="SaleProduct">
+                <button style="height:200px;width:250px;margin-left;margin-left:255px;margin-top:200px" type="button" class="btn btn-primary">İstatistik</button>
+            </a>
+                <div style="margin-top:10px">
+                    <div>
+                        <a asp-action="Index" asp-controller="ProductCategory"><button style="height:200px;width:250px;margin-bottom:33px;" type="button" class="btn btn-primary">Kategori İşlemleri</button></a>
+                        <a asp-action="Index" asp-controller="ProductModel"> <button style="height:200px;width:250px;" type="button" class="btn btn-primary">Model İşlemleri</button></a>
+                        <a asp-action="Index" asp-controller="Company"> <button style="height:200px;width:250px;margin-bottom:33px;" type="button" class="btn btn-primary">Şirket Bilgileri</button></a>
+                    </div>
+                </div>
+</main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2021 - Barkodlu Mağaza Sistemi - <a>Hasan Hüseyin ÇALILI</a>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+</body>
+</html>
